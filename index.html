@@ -269,7 +269,7 @@ function setPct(barEl, pct) {
 }
 
 /* Animate bar by +1% steps, showing every number */
-function hftFillBar (barId, target, cb, stepDelayMs = 20) {
+function hftFillBar (barId, target, cb, stepDelayMs = 60) {
   hftShowSteps();
 
   const bar    = qs(barId);
@@ -371,4 +371,5 @@ window.addEventListener('heyflow-screen-view', (e) => {
   }
 });
 </script>
+
 
