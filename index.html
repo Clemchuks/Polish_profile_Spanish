@@ -1,12 +1,15 @@
-<!-- ==========  RECURSOS EXTERNOS  ========== -->
+<!-- ==========  EXTERNAL ASSETS  ========== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-<!-- ==========  ESTILOS  ========== -->
+<!-- ==========  STYLE  ========== -->
 <style>
-/* --------- REINICIO + GLOBAL --------- */
+/* --------- RESET + GLOBAL --------- */
+
+.hft-wrapper{ 
+  font-family:"Montserrat", sans-serif; }
+
 .hft-wrapper{
-  font-family:"Montserrat",sans-serif;
   background:#f3e6d8;
   min-height:100vh;
   display:flex;
@@ -17,29 +20,30 @@
 }
 .hft-container{width:100%;max-width:34rem;text-align:center}
 
-/* --------- TIPOGRAFÍA --------- */
+/* --------- TYPOGRAPHY --------- */
 .hft-title{
   font-weight:700;
   line-height:1.25;
   margin:0;
-  font-size:1.5rem
+  font-size:1rem
 }
-@media(min-width:640px){.hft-title{font-size:1.875rem}}
-@media(min-width:768px){.hft-title{font-size:2.25rem}}
+@media(min-width:640px){.hft-title{font-size:1rem}}
+@media(min-width:768px){.hft-title{font-size:2rem}}
 
 .hft-title           { color:#1b1b1b; }
 .hft-title-key       { color:#147191; }
 .hft-step-text{
-  font-size:1rem;
+  font-size:0.5rem;
   color:#374151;
   margin:0
 }
-@media(min-width:640px){.hft-step-text{font-size:1.125rem}}
 
-/* --------- BARRA DE PROGRESO --------- */
+@media(min-width:640px){.hft-step-text{font-size:.8rem}}
+
+/* --------- PROGRESS BAR --------- */
 .hft-bar-shell{
   width:100%;
-  height:.875rem;
+  height:.675rem;
   background:#e5e7eb;
   border-radius:9999px;
   margin-top:.5rem;
@@ -57,7 +61,7 @@
   right:.6rem;
   top:50%;
   transform:translateY(-50%);
-  font-size:.8rem;
+  font-size:.75rem;
   color:rgba(255,255,255,.7);
   font-weight:600;
   white-space:nowrap
@@ -65,19 +69,20 @@
 
 .hft-check{color:#16a34a;font-size:1.125rem;margin-left:.5rem;display:none}
 
-/* --------- AYUDAS DE DISEÑO --------- */
+/* --------- LAYOUT HELPERS --------- */
 .hft-step{display:none;margin-top:2rem;text-align:left}
 .hft-flex-between{display:flex;justify-content:space-between;align-items:center}
 .hft-show{display:block !important}
 .hft-hidden{display:none !important}
 
-/* --------- BOTÓN CTA --------- */
+/* --------- CTA BUTTON --------- */
 .hft-cta{display:none;margin-top:3rem}
 .hft-btn{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:100%;
+  max-width:220px;   
+  margin:0 auto;
   background:#c98e4b;
   color:#fff;
   font-weight:600;
@@ -87,7 +92,7 @@
   text-decoration:none;
   transition:background .3s
 }
-.hft-btn:hover{background:#c98e4b}
+.hft-btn:hover{background: #c98e4b}
 .hft-btn i{margin-left:.75rem}
 
 /* --------- POPUP --------- */
@@ -111,15 +116,19 @@
   text-align:center
 }
 .hft-popup-title{
-  font-size:1.125rem;
-  font-weight:600;
-  margin:0 0 .75rem
+  font-size: 1.3rem;       /* sutil */
+  font-weight: 500;
+  color:#6b7280;           /* gris */
+  margin:0 0 .5rem;
 }
 .hft-popup-msg{
-  font-size:.9375rem;
-  color:#4b5563;
-  margin:0 0 1.5rem
+  font-size: 1.4rem;       /* pregunta principal */
+  font-weight: 500;
+  color:#111827;           /* casi negro */
+  line-height: 1.45;
+  margin:0 0 1.25rem;
 }
+
 .hft-popup-actions{
   display:flex;
   gap:.75rem;
@@ -129,10 +138,21 @@
 .hft-popup-btn{
   padding:.5rem 1.25rem;
   font-size:.9375rem;
-  border-radius:.375rem;
+  border-radius:1rem;
   border:none;
   cursor:pointer
 }
+/* Mostrar ✓ al completar */
+.hft-bar-percent.is-complete{
+  color:#fff;
+}
+.hft-bar-percent.is-complete::before{
+  content:"\2713";
+  font-weight:700;
+  font-size:1rem;
+  line-height:1;
+}
+
 .hft-popup-btn.yes{background:#16a34a;color:#fff}
 .hft-popup-btn.no {background:#16a34a;color:#fff}
 </style>
@@ -144,7 +164,7 @@
     <!-- PASOS (inicialmente ocultos) -->
     <div id="step-1" class="hft-step">
       <div class="hft-flex-between">
-        <p id="label-1" class="hft-step-text">Definición de objetivos</p>
+        <p id="label-1" class="hft-step-text">Establecimiento de objetivos</p>
         <i id="check-1" class="fas fa-check hft-check"></i>
       </div>
       <div class="hft-bar-shell">
@@ -172,12 +192,12 @@
       </div>
     </div>
 
-  <!-- CTA FINAL -->
-<div id="final-button" class="hft-cta">
-  <button type="button" class="hft-btn" disabled aria-disabled="true">
-    Enviar <i class="fas fa-play" aria-hidden="true"></i>
-  </button>
-</div>
+    <!-- FINAL CTA -->
+    <div id="final-button" class="hft-cta">
+      <a href="https://shop.try-spartan.com/main-hsp" target="_blank" rel="noopener" class="hft-btn">
+        Enviar
+      </a>
+    </div>
 
   </div><!-- /.container -->
 </div><!-- /.wrapper -->
@@ -194,31 +214,30 @@
   </div>
 </div>
 
-<!-- ==========  JS  ========== -->
 <script>
 /* ==========================================================
-   PLAN DE TRANSFORMACIÓN – script compatible con Heyflow (v2)
+   TRANSFORMATION PLAN  –  Heyflow-safe script (v2)
    ========================================================== */
 
-/* ---------------- TEXTO / ESTADO ---------------- */
+/* ---------------- TEXT / STATE CONFIG ---------------- */
 let hftStep = 1;
 
 const hftPopupContent = {
   1: { t: "Para continuar, por favor indica",
        m: "¿Estás decidido a detener por fin la caída del cabello?" },
   2: { t: "Para continuar, por favor indica",
-       m: "¿Sabías que el estrés y la genética son dos de los factores más importantes que provocan la caída del cabello?" },
+       m: "¿Sabías que el estrés y la genética son dos de los mayores factores que causan la caída del cabello?" },
   3: { t: "Para continuar, por favor indica",
-       m: "¿Te suena bien una rutina de cuidado del cabello más simple y eficaz?" }
+       m: "¿Te parece bien una rutina de cuidado del cabello más simple y eficaz?" }
 };
 
 const hftStepLabels = {
-  1: { load: "Definiendo objetivos…",                         done: "Objetivos" },
-  2: { load: "Evaluando respuestas sobre el estilo de vida…",  done: "Ajuste individual" },
-  3: { load: "Optimizando la selección de productos…",         done: "Esenciales seleccionados" }
+  1: { load: "Establecimiento de objetivos…",                 done: "Objetivos" },
+  2: { load: "Evaluando respuestas sobre el estilo de vida…", done: "Ajuste individual" },
+  3: { load: "Optimizando la selección de productos…",        done: "Esenciales seleccionados" }
 };
 
-/* ---------------- AUXILIARES ---------------- */
+/* ---------------- HELPERS ---------------- */
 function hftShowSteps () {
   for (let i = 1; i <= 3; i++) {
     const stepEl = document.getElementById(`step-${i}`);
@@ -236,25 +255,44 @@ function hftShowSteps () {
   }
 }
 
-function hftFillBar (id, target, cb) {
+/* Conteo suave y exacto +1 (sin saltos) */
+function hftFillBar (id, target, cb, stepDelayMs = 20) {
   hftShowSteps();
-  const bar      = document.getElementById(id);
-  const pctLbl   = document.getElementById(id.replace('bar', 'percent'));
-  const lbl      = document.getElementById(id.replace('bar', 'label'));
-  const tgt      = parseInt(target, 10);
-  let cur = 0;
 
-  const timer = setInterval(() => {
+  const bar    = document.getElementById(id);
+  const pctLbl = document.getElementById(id.replace('bar', 'percent'));
+  const lbl    = document.getElementById(id.replace('bar', 'label'));
+  const tgt    = parseInt(target, 10);
+
+  // Empezar desde el ancho actual si existe; por defecto 0
+  const start = parseInt((bar.style.width || '0').replace('%', ''), 10) || 0;
+  let cur = start;
+
+  // Asegurar etiqueta visible mientras anima
+  pctLbl.style.display = '';
+  pctLbl.textContent = `${cur}%`;
+
+  function tick () {
     if (cur >= tgt) {
-      clearInterval(timer);
-      if (tgt === 100) lbl.textContent = hftStepLabels[hftStep].done;
+      // Fin de esta etapa
+      if (tgt === 100) {
+        lbl.textContent = hftStepLabels[hftStep].done;
+        pctLbl.textContent = "";          // ocultar número
+        pctLbl.style.display = "none";    // ocultar overlay
+      }
       if (cb) setTimeout(cb, 1500);
-    } else {
-      cur++;
-      bar.style.width = `${cur}%`;
-      pctLbl.textContent = `${cur}%`;
+      return;
     }
-  }, 50);
+
+    cur += 1;                              // incremento exacto +1
+    bar.style.width = `${cur}%`;
+    pctLbl.textContent = `${cur}%`;
+
+    setTimeout(tick, stepDelayMs);
+  }
+
+  // Iniciar conteo
+  setTimeout(tick, stepDelayMs);
 }
 
 function hftShowPopup () {
@@ -272,13 +310,17 @@ function hftHidePopup () {
 function hftHandleResponse () {
   hftHidePopup();
 
-  /* marcar el paso actual como completado */
-  document.getElementById(`bar-${hftStep}`).style.width      = '100%';
-  document.getElementById(`percent-${hftStep}`).textContent  = '100%';
-  document.getElementById(`check-${hftStep}`).style.display  = 'inline';
-  document.getElementById(`label-${hftStep}`).textContent    = hftStepLabels[hftStep].done;
+  /* marcar el paso actual como completo al instante */
+  document.getElementById(`bar-${hftStep}`).style.width = '100%';
 
-  /* siguiente paso o finalización */
+  const pct = document.getElementById(`percent-${hftStep}`);
+  pct.textContent = "";                 // sin "100%"
+  pct.style.display = "none";           // ocultar etiqueta
+
+  document.getElementById(`check-${hftStep}`).style.display = 'inline';
+  document.getElementById(`label-${hftStep}`).textContent   = hftStepLabels[hftStep].done;
+
+  /* siguiente paso o finalizar */
   hftStep++;
 
   if (hftStep <= 3) {
@@ -293,26 +335,26 @@ function hftHandleResponse () {
 
 /* ---------------- INIT (run once) ---------------- */
 function hftRunOnce () {
-  if (window.__hft_started) return;      /* protección contra doble inicio */
+  if (window.__hft_started) return;      /* evitar doble inicio */
   window.__hft_started = true;
 
   setTimeout(() => {
     hftShowSteps();
     hftFillBar('bar-1', 50, () => setTimeout(hftShowPopup, 2000));
-  }, 4000);                              /* inicio retrasado */
+  }, 4000);                              /* inicio con retraso */
 }
 
 /* --------------------------------------------------
-   ① Vista independiente – DOMContentLoaded
+   ① Vista independiente  –  DOMContentLoaded
 -------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(hftRunOnce, 50);
 });
 
 /* --------------------------------------------------
-   ② Múltiples pantallas – heyflow-screen-view
+   ② Flujo multi-pantalla  –  heyflow-screen-view
 -------------------------------------------------- */
-const MY_SCREEN = "";   // p. ej., "Transformación"
+const MY_SCREEN = "";   // p. ej. "Transformación"
 
 window.addEventListener('heyflow-screen-view', (e) => {
   if (!MY_SCREEN || (e.detail && e.detail.screenName === MY_SCREEN)) {
