@@ -1,0 +1,322 @@
+<!-- ==========  RECURSOS EXTERNOS  ========== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<!-- ==========  ESTILOS  ========== -->
+<style>
+/* --------- REINICIO + GLOBAL --------- */
+.hft-wrapper{
+  font-family:"Montserrat",sans-serif;
+  background:#f3e6d8;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:2.5rem 1rem;
+  color:#1b1b1b
+}
+.hft-container{width:100%;max-width:34rem;text-align:center}
+
+/* --------- TIPOGRAFÍA --------- */
+.hft-title{
+  font-weight:700;
+  line-height:1.25;
+  margin:0;
+  font-size:1.5rem
+}
+@media(min-width:640px){.hft-title{font-size:1.875rem}}
+@media(min-width:768px){.hft-title{font-size:2.25rem}}
+
+.hft-title           { color:#1b1b1b; }
+.hft-title-key       { color:#147191; }
+.hft-step-text{
+  font-size:1rem;
+  color:#374151;
+  margin:0
+}
+@media(min-width:640px){.hft-step-text{font-size:1.125rem}}
+
+/* --------- BARRA DE PROGRESO --------- */
+.hft-bar-shell{
+  width:100%;
+  height:.875rem;
+  background:#e5e7eb;
+  border-radius:9999px;
+  margin-top:.5rem;
+  overflow:hidden
+}
+.hft-bar{
+  height:100%;
+  width:0;
+  background:#16a34a;
+  position:relative;
+  transition:width 2s ease
+}
+.hft-bar-percent{
+  position:absolute;
+  right:.6rem;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:.8rem;
+  color:rgba(255,255,255,.7);
+  font-weight:600;
+  white-space:nowrap
+}
+
+.hft-check{color:#16a34a;font-size:1.125rem;margin-left:.5rem;display:none}
+
+/* --------- AYUDAS DE DISEÑO --------- */
+.hft-step{display:none;margin-top:2rem;text-align:left}
+.hft-flex-between{display:flex;justify-content:space-between;align-items:center}
+.hft-show{display:block !important}
+.hft-hidden{display:none !important}
+
+/* --------- BOTÓN CTA --------- */
+.hft-cta{display:none;margin-top:3rem}
+.hft-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  background:#c98e4b;
+  color:#fff;
+  font-weight:600;
+  font-size:1rem;
+  padding:.75rem 1.5rem;
+  border-radius:.625rem;
+  text-decoration:none;
+  transition:background .3s
+}
+.hft-btn:hover{background:#c98e4b}
+.hft-btn i{margin-left:.75rem}
+
+/* --------- POPUP --------- */
+.hft-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.6);
+  z-index:999;
+  padding:1rem
+}
+.hft-popup-box{
+  background:#fff;
+  width:100%;
+  max-width:22rem;
+  padding:2rem;
+  border-radius:.75rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  text-align:center
+}
+.hft-popup-title{
+  font-size:1.125rem;
+  font-weight:600;
+  margin:0 0 .75rem
+}
+.hft-popup-msg{
+  font-size:.9375rem;
+  color:#4b5563;
+  margin:0 0 1.5rem
+}
+.hft-popup-actions{
+  display:flex;
+  gap:.75rem;
+  flex-wrap:wrap;
+  justify-content:center
+}
+.hft-popup-btn{
+  padding:.5rem 1.25rem;
+  font-size:.9375rem;
+  border-radius:.375rem;
+  border:none;
+  cursor:pointer
+}
+.hft-popup-btn.yes{background:#16a34a;color:#fff}
+.hft-popup-btn.no {background:#16a34a;color:#fff}
+</style>
+
+<!-- ==========  HTML  ========== -->
+<div class="hft-wrapper" lang="es">
+  <div class="hft-container">
+
+    <!-- PASOS (inicialmente ocultos) -->
+    <div id="step-1" class="hft-step">
+      <div class="hft-flex-between">
+        <p id="label-1" class="hft-step-text">Definición de objetivos</p>
+        <i id="check-1" class="fas fa-check hft-check"></i>
+      </div>
+      <div class="hft-bar-shell">
+        <div id="bar-1" class="hft-bar"><span id="percent-1" class="hft-bar-percent">0%</span></div>
+      </div>
+    </div>
+
+    <div id="step-2" class="hft-step">
+      <div class="hft-flex-between">
+        <p id="label-2" class="hft-step-text">Evaluación de respuestas sobre el estilo de vida</p>
+        <i id="check-2" class="fas fa-check hft-check"></i>
+      </div>
+      <div class="hft-bar-shell">
+        <div id="bar-2" class="hft-bar"><span id="percent-2" class="hft-bar-percent">0%</span></div>
+      </div>
+    </div>
+
+    <div id="step-3" class="hft-step">
+      <div class="hft-flex-between">
+        <p id="label-3" class="hft-step-text">Optimización de la selección de productos</p>
+        <i id="check-3" class="fas fa-check hft-check"></i>
+      </div>
+      <div class="hft-bar-shell">
+        <div id="bar-3" class="hft-bar"><span id="percent-3" class="hft-bar-percent">0%</span></div>
+      </div>
+    </div>
+
+  <!-- CTA FINAL -->
+<div id="final-button" class="hft-cta">
+  <button type="button" class="hft-btn" disabled aria-disabled="true">
+    Enviar <i class="fas fa-play" aria-hidden="true"></i>
+  </button>
+</div>
+
+  </div><!-- /.container -->
+</div><!-- /.wrapper -->
+
+<!-- POPUP -->
+<div id="hft-popup" class="hft-popup" role="dialog" aria-modal="true">
+  <div class="hft-popup-box">
+    <h2 class="hft-popup-title"></h2>
+    <p class="hft-popup-msg"></p>
+    <div class="hft-popup-actions">
+      <button class="hft-popup-btn no"  onclick="hftHandleResponse()">No</button>
+      <button class="hft-popup-btn yes" onclick="hftHandleResponse()">Sí</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==========  JS  ========== -->
+<script>
+/* ==========================================================
+   PLAN DE TRANSFORMACIÓN – script compatible con Heyflow (v2)
+   ========================================================== */
+
+/* ---------------- TEXTO / ESTADO ---------------- */
+let hftStep = 1;
+
+const hftPopupContent = {
+  1: { t: "Para continuar, por favor indica",
+       m: "¿Estás decidido a detener por fin la caída del cabello?" },
+  2: { t: "Para continuar, por favor indica",
+       m: "¿Sabías que el estrés y la genética son dos de los factores más importantes que provocan la caída del cabello?" },
+  3: { t: "Para continuar, por favor indica",
+       m: "¿Te suena bien una rutina de cuidado del cabello más simple y eficaz?" }
+};
+
+const hftStepLabels = {
+  1: { load: "Definiendo objetivos…",                         done: "Objetivos" },
+  2: { load: "Evaluando respuestas sobre el estilo de vida…",  done: "Ajuste individual" },
+  3: { load: "Optimizando la selección de productos…",         done: "Esenciales seleccionados" }
+};
+
+/* ---------------- AUXILIARES ---------------- */
+function hftShowSteps () {
+  for (let i = 1; i <= 3; i++) {
+    const stepEl = document.getElementById(`step-${i}`);
+    const lblEl  = document.getElementById(`label-${i}`);
+    const bar    = document.getElementById(`bar-${i}`);
+
+    if (i <= hftStep) {
+      stepEl.classList.add('hft-show');
+      if (bar.style.width !== '100%') {
+        lblEl.textContent = hftStepLabels[i].load;
+      }
+    } else {
+      stepEl.classList.remove('hft-show');
+    }
+  }
+}
+
+function hftFillBar (id, target, cb) {
+  hftShowSteps();
+  const bar      = document.getElementById(id);
+  const pctLbl   = document.getElementById(id.replace('bar', 'percent'));
+  const lbl      = document.getElementById(id.replace('bar', 'label'));
+  const tgt      = parseInt(target, 10);
+  let cur = 0;
+
+  const timer = setInterval(() => {
+    if (cur >= tgt) {
+      clearInterval(timer);
+      if (tgt === 100) lbl.textContent = hftStepLabels[hftStep].done;
+      if (cb) setTimeout(cb, 1500);
+    } else {
+      cur++;
+      bar.style.width = `${cur}%`;
+      pctLbl.textContent = `${cur}%`;
+    }
+  }, 50);
+}
+
+function hftShowPopup () {
+  const pop      = document.getElementById('hft-popup');
+  const { t, m } = hftPopupContent[hftStep];
+  pop.querySelector('.hft-popup-title').textContent = t;
+  pop.querySelector('.hft-popup-msg').textContent   = m;
+  pop.style.display = 'flex';
+}
+
+function hftHidePopup () {
+  document.getElementById('hft-popup').style.display = 'none';
+}
+
+function hftHandleResponse () {
+  hftHidePopup();
+
+  /* marcar el paso actual como completado */
+  document.getElementById(`bar-${hftStep}`).style.width      = '100%';
+  document.getElementById(`percent-${hftStep}`).textContent  = '100%';
+  document.getElementById(`check-${hftStep}`).style.display  = 'inline';
+  document.getElementById(`label-${hftStep}`).textContent    = hftStepLabels[hftStep].done;
+
+  /* siguiente paso o finalización */
+  hftStep++;
+
+  if (hftStep <= 3) {
+    setTimeout(() => hftFillBar(`bar-${hftStep}`, 50, hftShowPopup), 4000);
+  } else {
+    hftShowSteps();
+    setTimeout(() => {
+      document.getElementById('final-button').style.display = 'block';
+    }, 1500);
+  }
+}
+
+/* ---------------- INIT (run once) ---------------- */
+function hftRunOnce () {
+  if (window.__hft_started) return;      /* protección contra doble inicio */
+  window.__hft_started = true;
+
+  setTimeout(() => {
+    hftShowSteps();
+    hftFillBar('bar-1', 50, () => setTimeout(hftShowPopup, 2000));
+  }, 4000);                              /* inicio retrasado */
+}
+
+/* --------------------------------------------------
+   ① Vista independiente – DOMContentLoaded
+-------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(hftRunOnce, 50);
+});
+
+/* --------------------------------------------------
+   ② Múltiples pantallas – heyflow-screen-view
+-------------------------------------------------- */
+const MY_SCREEN = "";   // p. ej., "Transformación"
+
+window.addEventListener('heyflow-screen-view', (e) => {
+  if (!MY_SCREEN || (e.detail && e.detail.screenName === MY_SCREEN)) {
+    hftRunOnce();
+  }
+});
+</script>
