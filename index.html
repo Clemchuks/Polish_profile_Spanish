@@ -155,7 +155,62 @@
 
 .hft-popup-btn.yes{background:#16a34a;color:#fff}
 .hft-popup-btn.no {background:#16a34a;color:#fff}
+/* ====== BRAND HEADER (TITAN) ====== */
+.hft-header{
+  position: sticky;         /* stays at the top on scroll */
+  top: 0;
+  z-index: 1000;
+  background: #f3e6d8;      /* matches page background */
+  border-bottom: 3px solid #c98e4b; /* same accent as CTA */
+}
+.hft-header-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* center the logo like in the screenshot */
+}
+.hft-logo{
+  height: 56px;             /* responsive but controlled height */
+  width: auto;
+}
+@media (min-width: 768px){
+  .hft-logo{ height: 72px; }
+}
+
+/* Header can stay sticky but below the popup */
+.hft-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;        /* keep */
+}
+
+/* Make the popup overlay sit on top of EVERYTHING (incl. header) */
+.hft-popup{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.6);
+  z-index: 10000;       /* ↑ was 999 — raise above header */
+  padding: 1rem;
+}
+
 </style>
+
+<header class="hft-header" aria-label="Brand">
+  <div class="hft-header-inner">
+    <img
+      class="hft-logo"
+      src="https://assets.prd.heyflow.com/flows/8q25ySP4GA5rTTS9Dbh8/www/assets/16eae8a4-c19d-49fc-a716-571c6f7305c3/original.avif"
+      alt="TITAN"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+</header>
 
 <!-- ==========  HTML  ========== -->
 <div class="hft-wrapper" lang="es">
